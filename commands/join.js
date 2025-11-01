@@ -7,9 +7,7 @@ module.exports = {
   async execute(message) {
     try {
       const voiceChannel = message.member.voice.channel;
-      if (!voiceChannel) {
-        return message.reply('❌ Você precisa estar em uma call para eu entrar!');
-      }
+      if (!voiceChannel) return message.reply('❌ Você precisa estar em uma call para eu entrar!');
 
       joinVoiceChannel({
         channelId: voiceChannel.id,
