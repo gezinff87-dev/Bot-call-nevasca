@@ -1,0 +1,5 @@
+TYPE=bot
+MAIN=index.js
+NAME=Bot call
+RAM=100
+AUTORESTART=true
