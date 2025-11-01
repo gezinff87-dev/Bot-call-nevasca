@@ -1,3 +1,4 @@
+require('dotenv').config(); // Para ler variáveis de ambiente localmente (opcional)
 const fs = require('fs');
 const path = require('path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
@@ -13,7 +14,7 @@ const client = new Client({
 
 client.commands = new Collection();
 
-// Carregar comandos da pasta "commands"
+// Carregar todos os comandos da pasta commands
 const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
@@ -43,7 +44,7 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-// Tratamento de erros globais
+// Tratamento global de erros
 process.on('unhandledRejection', (error) => {
   console.error('Unhandled promise rejection:', error);
 });
@@ -52,4 +53,5 @@ process.on('uncaughtException', (error) => {
   console.error('Uncaught exception:', error);
 });
 
+// Logar o bot usando variável de ambiente
 client.login(process.env.TOKEN);
