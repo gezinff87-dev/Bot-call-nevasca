@@ -52,4 +52,4 @@ process.on('uncaughtException', (error) => {
   console.error('Uncaught exception:', error);
 });
 
-client.login('SEU_TOKEN_AQUI'); // Substitua pelo token do seu bot
+client.login(process.env.TOKEN);
